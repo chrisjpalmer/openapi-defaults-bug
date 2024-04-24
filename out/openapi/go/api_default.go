@@ -58,9 +58,14 @@ func (c *DefaultAPIController) Routes() Routes {
 // FooGet -
 func (c *DefaultAPIController) FooGet(w http.ResponseWriter, r *http.Request) {
 	query := r.URL.Query()
-	orderParam := "ASC"
+	var orderParam string
 	if query.Has("order") {
-		orderParam = query.Get("order")
+		param := query.Get("order")
+
+		orderParam = param
+	} else {
+		param := ASC
+		orderParam = param
 	}
 	result, err := c.service.FooGet(r.Context(), orderParam)
 	// If an error occurred, encode the error with the status code
