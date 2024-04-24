@@ -1,0 +1,5 @@
+generatorName: go-server
+inputSpec: /local/openapi/specs/foo.yaml
+outputDir: /local/out/openapi
+additionalProperties:
+  addResponseHeaders: true
